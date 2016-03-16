@@ -18,12 +18,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <!-- Shared styles between elements -->
 <dom-module id="shared-styles">
-<template><style>
+  <template>
+    <style>
 
-  @import 'breakpoints';
-  @import 'components/page';
+      @import 'breakpoints';
+      @import 'general';
 
-</style></template>
+    </style>
+  </template>
 </dom-module>
 
 <style is="custom-style">
@@ -31,6 +33,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   body {
     @apply(--layout-fullbleed);
     @apply(--layout-vertical);
+    font-family: 'Roboto', 'Noto', sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
 
 </style>

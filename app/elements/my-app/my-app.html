@@ -18,6 +18,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/iron-localstorage/iron-localstorage.html">
 <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
 
 <!-- Paper elements -->
 <link rel="import" href="../../bower_components/paper-drawer-panel/paper-drawer-panel.html">
@@ -40,7 +41,50 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <template>
     <style include="shared-styles">
-      @import "theme.css";
+      :host {
+        display: block;
+        --paper-toolbar-background: transparent;
+      }
+
+      .header-panel {
+        @apply(--layout-fit);
+      }
+
+      .toolbar[shadow] {
+        background: transparent;
+        will-change: background;
+        transition: background 0.4s;
+      }
+
+      .toolbar[shadow] {
+        background: #fff;
+      }
+
+      .toolbar::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -5px;
+        width: 100%;
+        height: 5px;
+        pointer-events: none;
+        opacity: 0;
+        will-change: opacity;
+        transition: opacity 0.4s;
+        -webkit-transform: translateZ(0);
+        box-shadow: inset 0 5px 2px -3px rgba(0, 0, 0, 0.2);
+      }
+
+      .toolbar[shadow]::after {
+        opacity: 1;
+      }
+
+      .logo-wrapper {
+        @apply(--layout-vertical);
+        @apply(--layout-center-center);
+        margin-left: 20px;
+      }
 
       .logo {
         width: 130px;
@@ -53,17 +97,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                        on-iron-localstorage-load-empty="initializeDefaultStorage">
     </iron-localstorage>
 
-    <paper-scroll-header-panel id="headerPanelMain" class="Main" main condenses keep-condensed-header>
+    <paper-scroll-header-panel id="headerPanelMain" class="header-panel" main condenses header-state="{{_scrolled}}" condensed-header-height="64">
 
       <!-- Main Toolbar -->
-      <paper-toolbar class="Main-header">
-        <a data-route="home" href="/">
-          <iron-image class="logo" src="/images/logo.svg" sizing="contain"
-                      alt="{$ title $}"></iron-image>
-        </a>
+      <paper-toolbar class="toolbar" shadow$="{{_scrollTop}}">
+          <a class="logo-wrapper" data-route="home" href="/">
+            <iron-image class="logo" src="/images/logo.svg" sizing="contain"
+                        alt="{$ title $}"></iron-image>
+          </a>
+        <h2>{{scrolled}}</h2>
       </paper-toolbar>
+      <div class="container">
 
-      <home-page></home-page>
+        <home-page></home-page>
+      </div>
     </paper-scroll-header-panel>
 
     <paper-toast id="confirmToast" class="Toast" duration="10000">

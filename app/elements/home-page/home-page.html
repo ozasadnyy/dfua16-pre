@@ -15,7 +15,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 
-<dom-module id="my-greeting">
+<link rel="import" href="../blocks-container/blocks-container.html">
+
+<dom-module id="home-page">
 
   <template>
     <style include="shared-styles">
@@ -23,9 +25,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: block;
       }
 
+      .main-background {
+      }
+
+      .main-title {
+        font-size: 3em;
+      }
     </style>
 
-<h1>Join us on September 09-10, Lviv</h1>
+    <div class="main-background">
+      <h1 class="main-title">Join us on September 09-10, Lviv</h1>
+      <blocks-container>
+        <div class="block-item" style="background: bisque">
+          <h2>Title</h2>
+          <a href="">Follow me</a>
+        </div>
+        <div class="block-item" style="background: skyblue">
+          <h2>Title</h2>
+          <a href="">Follow me</a>
+        </div>
+      </blocks-container>
+    </div>
 
   </template>
 
