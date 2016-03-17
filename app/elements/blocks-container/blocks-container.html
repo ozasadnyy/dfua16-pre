@@ -15,17 +15,23 @@
       ::content > .block-item {
         @apply(--layout-vertical);
         @apply(--layout-flex);
-        padding: 16px;
+        position: relative;
         width: 100%;
         min-height: 240px;
         transition: box-shadow 120ms ease-out;
       }
 
+      ::content > .block-item > .content {
+        padding: 16px;
+      }
+
       @media (min-width: 769px) {
         ::content > .block-item {
-          padding: 24px;
           width: 50%;
           height: 320px;
+        }
+        ::content > .block-item > .content {
+          padding: 24px;
         }
 
         ::content > .block-item:hover {
@@ -34,7 +40,7 @@
       }
 
       @media (min-width: 961px) {
-        ::content > .block-item {
+        ::content > .block-item > .block-item {
           padding: 32px;
         }
       }
@@ -44,7 +50,6 @@
           height: 580px;
         }
       }
-
 
     </style>
 
