@@ -16,6 +16,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html">
 <link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
 
 
 <link rel="import" href="../../bower_components/neon-animation/neon-animated-pages.html">
@@ -28,18 +29,43 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style include="shared-styles">
       :host {
         display: block;
+        height: 100%;
+        color: #4E4E4E;
       }
 
       .main-background {
+        @apply(--layout-vertical);
+        @apply(--layout-center);
+        height: 100%;
+      }
+
+      .main-background > * {
+        @apply(--layout-flex);
+      }
+
+      .main-description {
+        @apply(--layout-vertical);
+        @apply(--layout-center-center);
+      }
+
+      .logo {
+        width: 30vw;
+        height: 150px;
       }
 
       .main-title {
-        font-size: 3em;
+        font-size: 2.5em;
+        font-weight: 100;
       }
 
       .pages {
         width: 100%;
         height: 100%;
+      }
+
+      .content {
+        background: #607D8B;
+        color: #fff;
       }
 
       .image-view {
@@ -48,39 +74,46 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
 
     <div class="main-background">
-      <h1 class="main-title">Join us on September 09-10, Lviv</h1>
-      <blocks-container>
-        <div class="block-item" style="background: bisque">
-          <div class="content">
-            <neon-animated-pages class="pages" selected="{{selected}}" entry-animation="fade-in-animation"
+      <div class="main-description">
+        <iron-image class="logo" src="/images/logo.svg" sizing="contain" alt="{$ title $}"></iron-image>
+        <h3 class="main-title">Join us on September 09-10, Lviv</h3>
+      </div>
+      <div>
+        <blocks-container>
+          <div class="block-item">
+            <div class="content">
+              <neon-animated-pages class="pages" selected="{{selected}}" entry-animation="fade-in-animation"
+                                   exit-animation="fade-out-animation">
+                <neon-animatable>
+                  <p>The biggest Google tech conference in Ukraine carefully crafted for you by GDG community! All about
+                    Android, Web and Cloud from the world experts</p>
+                </neon-animatable>
+                <neon-animatable>
+                  <p>Would you like to become a speaker?</p>
+                  <paper-button>Fill form</paper-button>
+                </neon-animatable>
+                <neon-animatable>
+                  <h2>Test 3</h2>
+                </neon-animatable>
+              </neon-animated-pages>
+            </div>
+          </div>
+          <div class="block-item">
+            <neon-animated-pages id="blocks" class="pages" selected="{{selected}}" entry-animation="fade-in-animation"
                                  exit-animation="fade-out-animation">
               <neon-animatable>
-                <h2>Test 1</h2>
+                <iron-image class="image-view" src="/images/background/2015_1.jpg" sizing="cover"></iron-image>
               </neon-animatable>
               <neon-animatable>
-                <h2>Test 2</h2>
+                <iron-image class="image-view" src="/images/background/2015_2.jpg" sizing="cover"></iron-image>
               </neon-animatable>
               <neon-animatable>
-                <h2>Test 3</h2>
+                <iron-image class="image-view" src="/images/background/2015_3.jpg" sizing="cover"></iron-image>
               </neon-animatable>
             </neon-animated-pages>
           </div>
-        </div>
-        <div class="block-item" style="background: skyblue">
-          <neon-animated-pages id="blocks" class="pages" selected="{{selected}}" entry-animation="fade-in-animation"
-                               exit-animation="fade-out-animation">
-            <neon-animatable>
-              <iron-image class="image-view" src="/images/background/2015_1.jpg" sizing="cover"></iron-image>
-            </neon-animatable>
-            <neon-animatable>
-              <iron-image class="image-view" src="/images/background/2015_2.jpg" sizing="cover"></iron-image>
-            </neon-animatable>
-            <neon-animatable>
-              <iron-image class="image-view" src="/images/background/2015_3.jpg" sizing="cover"></iron-image>
-            </neon-animatable>
-          </neon-animated-pages>
-        </div>
-      </blocks-container>
+        </blocks-container>
+      </div>
     </div>
 
   </template>

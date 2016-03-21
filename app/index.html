@@ -18,12 +18,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <body>
   <span id="browser-sync-binding"></span>
 
-  <!-- Light weight skeleton is outside of Polymer/imports and styled by
-       the main page. 1st paint is fast, even on polyfilled browsers. Alternatively,
-       one could create an "app shell" and style the page's un-upgraded elements
-       similar to their final upgraded version. -->
-  {% include "skeleton.html" %}
-
   <!-- Elements wait on the page and are upgraded when elements/base-bundle.html loads. -->
   <my-app id="app"></my-app>
 

@@ -46,6 +46,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         --paper-toolbar-background: transparent;
       }
 
+      .container {
+        height: 100%;
+      }
+
       .header-panel {
         @apply(--layout-fit);
       }
@@ -100,17 +104,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <paper-scroll-header-panel id="headerPanelMain" class="header-panel" main condenses header-state="{{_scrolled}}" condensed-header-height="64">
 
       <!-- Main Toolbar -->
-      <paper-toolbar class="toolbar" shadow$="{{_scrollTop}}">
-          <a class="logo-wrapper" data-route="home" href="/">
-            <iron-image class="logo" src="/images/logo.svg" sizing="contain"
-                        alt="{$ title $}"></iron-image>
-          </a>
-        <h2>{{scrolled}}</h2>
-      </paper-toolbar>
-      <div class="container">
+      <!--<paper-toolbar class="toolbar" shadow$="{{_scrollTop}}">-->
+          <!--<a class="logo-wrapper" data-route="home" href="/">-->
+            <!--<iron-image class="logo" src="/images/logo.svg" sizing="contain"-->
+                        <!--alt="{$ title $}"></iron-image>-->
+          <!--</a>-->
+      <!--</paper-toolbar>-->
 
+      <div class="container">
         <home-page></home-page>
       </div>
+
     </paper-scroll-header-panel>
 
     <paper-toast id="confirmToast" class="Toast" duration="10000">

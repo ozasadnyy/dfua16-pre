@@ -13,8 +13,7 @@ class HomePage {
     window.clearInterval(_cycleBlocksInterval);
     var _cycleBlocksInterval = window.setInterval(function () {
       this.$.blocks.selectNext();
-    }
-      .bind(this), 8000);
+    }.bind(this), 8000);
   }
 }
 

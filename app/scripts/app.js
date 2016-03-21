@@ -45,10 +45,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     var onImportLoaded = function() {
       logger('Imports are loaded and elements have been registered!');
 
-      // Remove skeleton
-      var skeleton = document.getElementById('skeleton');
-      skeleton.remove();
-
       if (webComponentsSupported) {
         // Emulate WebComponentsReady event for browsers supporting Web Components natively
         // (Chrome, Opera, Vivaldi)
