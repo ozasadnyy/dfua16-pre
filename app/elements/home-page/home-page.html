@@ -20,32 +20,39 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
 <link rel="import" href="../../bower_components/neon-animation/neon-animated-pages.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/scale-up-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
 
 <link rel="import" href="../blocks-container/blocks-container.html">
+<link rel="import" href="../video-dialog/video-dialog.html">
+<link rel="import" href="../mailchimp-subscribe/mailchimp-subscribe.html">
 
 <dom-module id="home-page">
 
   <template>
     <style include="shared-styles">
       :host {
-        display: block;
-        height: 100%;
-        color: #4E4E4E;
-      }
-
-      .main-background {
+        --mailchimp-color: #fff;
         @apply(--layout-vertical);
-        @apply(--layout-center);
+        @apply(--layout-justified);
+        @apply(--layout-fit);
+        width: 100%;
         height: 100%;
+        font-weight: 100;
+        color: #4e4e4e;
+        overflow: hidden;
       }
 
-      .main-background > * {
-        @apply(--layout-flex);
+      a {
+        text-decoration: none;
+        color: #fff;
       }
 
       .main-description {
         @apply(--layout-vertical);
         @apply(--layout-center-center);
+        @apply(--layout-flex);
+        padding: 32px;
       }
 
       .logo {
@@ -54,8 +61,89 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       .main-title {
+        margin: 15px auto;
         font-size: 2.5em;
         font-weight: 100;
+      }
+
+      .dates {
+        margin-top: 10px;
+        font-size: 1.6em;
+      }
+
+      .play-video {
+        @apply(--layout-vertical);
+        @apply(--layout-center-center);
+        margin: 10px auto;
+        cursor: pointer;
+        transition: transform 0.5s;
+      }
+
+      .play-video:hover {
+        transform: scale(1.05);
+      }
+
+      .play-icon {
+        --iron-icon-width: 46px;
+        --iron-icon-height: 46px;
+      }
+
+      .play-text {
+        margin-top: 5px;
+        font-size: 0.95em;
+        font-weight: 400;
+      }
+
+      .footer {
+        @apply(--layout-vertical);
+        @apply(--layout-justified);
+        padding: 24px;
+        width: 100%;
+        background: #607D8B;
+        color: #fff;
+      }
+
+      .connect {
+        @apply(--layout-horizontal);
+        @apply(--layout-justified);
+      }
+
+      .subscribe {
+        @apply(--layout-flex);
+      }
+
+      .tweets {
+        @apply(--layout-flex);
+      }
+
+      .hashtag {
+        margin: 0;
+        font-size: 4em;
+      }
+
+      .divider {
+        width: 40px;
+      }
+
+      .bottom {
+        margin-top: 20px;
+        list-style: none;
+        text-align: center;
+      }
+
+      .links {
+        margin: 0;
+        padding: 0;
+      }
+
+      .bottom li {
+        margin: 0;
+        display: inline-block;
+        font-size: 0.9em;
+      }
+
+      .bottom li:not(:last-of-type)::after {
+        content: " • ";
       }
 
       .pages {
@@ -73,48 +161,83 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
 
-    <div class="main-background">
-      <div class="main-description">
-        <iron-image class="logo" src="/images/logo.svg" sizing="contain" alt="{$ title $}"></iron-image>
-        <h3 class="main-title">Join us on September 09-10, Lviv</h3>
-      </div>
-      <div>
-        <blocks-container>
-          <div class="block-item">
-            <div class="content">
-              <neon-animated-pages class="pages" selected="{{selected}}" entry-animation="fade-in-animation"
-                                   exit-animation="fade-out-animation">
-                <neon-animatable>
-                  <p>The biggest Google tech conference in Ukraine carefully crafted for you by GDG community! All about
-                    Android, Web and Cloud from the world experts</p>
-                </neon-animatable>
-                <neon-animatable>
-                  <p>Would you like to become a speaker?</p>
-                  <paper-button>Fill form</paper-button>
-                </neon-animatable>
-                <neon-animatable>
-                  <h2>Test 3</h2>
-                </neon-animatable>
-              </neon-animated-pages>
-            </div>
-          </div>
-          <div class="block-item">
-            <neon-animated-pages id="blocks" class="pages" selected="{{selected}}" entry-animation="fade-in-animation"
-                                 exit-animation="fade-out-animation">
-              <neon-animatable>
-                <iron-image class="image-view" src="/images/background/2015_1.jpg" sizing="cover"></iron-image>
-              </neon-animatable>
-              <neon-animatable>
-                <iron-image class="image-view" src="/images/background/2015_2.jpg" sizing="cover"></iron-image>
-              </neon-animatable>
-              <neon-animatable>
-                <iron-image class="image-view" src="/images/background/2015_3.jpg" sizing="cover"></iron-image>
-              </neon-animatable>
-            </neon-animated-pages>
-          </div>
-        </blocks-container>
+    <div class="container main-description">
+      <iron-image class="logo" src="/images/logo.svg" sizing="contain" alt="{$ title $}"></iron-image>
+      <h3 class="main-title">Inspire other people by your own example</h3>
+      <p class="dates">Join us on September 09-10, Lviv</p>
+
+      <div class="play-video" on-tap="openVideo">
+        <div>
+          <iron-icon class="play-icon" icon="icons:play"></iron-icon>
+        </div>
+        <div class="play-text">See how it was in 2015</div>
       </div>
     </div>
+
+    <div class="footer">
+      <div class="container">
+        <div class="connect">
+          <div class="subscribe">
+            <p>Stay connected with us. Subscribe to get the latest news.</p>
+            <mailchimp-subscribe url="[[mailchimp.url]]" name="[[mailchimp.name]]"></mailchimp-subscribe>
+          </div>
+          <div class="divider"></div>
+          <div class="tweets">
+            <p class="hashtag">#dfua</p>
+          </div>
+        </div>
+        <div class="bottom">
+          <ul class="links">
+            <li><a href="/2015" target="_blank">GDG DevFest 2015</a></li>
+            <li><a href="/2015" target="_blank">Become a speaker</a></li>
+            <li><a href="/2015" target="_blank">Become a sponsor</a></li>
+            <li><a href="mailto:devfest@gdg.org.ua" target="_blank">devfest@gdg.org.ua</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!--<div>-->
+    <!--<blocks-container>-->
+    <!--<div class="block-item">-->
+    <!--<div class="content">-->
+    <!--<neon-animated-pages class="pages" selected="{{selected}}" entry-animation="fade-in-animation"-->
+    <!--exit-animation="fade-out-animation">-->
+    <!--<neon-animatable>-->
+    <!--<p>The biggest Google tech conference in Ukraine carefully crafted for you by GDG community! All about-->
+    <!--Android, Web and Cloud from the world experts</p>-->
+    <!--</neon-animatable>-->
+    <!--<neon-animatable>-->
+    <!--<p>Would you like to become a speaker?</p>-->
+    <!--<paper-button>Fill form</paper-button>-->
+    <!--</neon-animatable>-->
+    <!--<neon-animatable>-->
+    <!--<h2>Test 3</h2>-->
+    <!--</neon-animatable>-->
+    <!--</neon-animated-pages>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="block-item">-->
+    <!--<neon-animated-pages id="blocks" class="pages" selected="{{selected}}" entry-animation="fade-in-animation"-->
+    <!--exit-animation="fade-out-animation">-->
+    <!--<neon-animatable>-->
+    <!--<iron-image class="image-view" src="/images/background/2015_1.jpg" sizing="cover"></iron-image>-->
+    <!--</neon-animatable>-->
+    <!--<neon-animatable>-->
+    <!--<iron-image class="image-view" src="/images/background/2015_2.jpg" sizing="cover"></iron-image>-->
+    <!--</neon-animatable>-->
+    <!--<neon-animatable>-->
+    <!--<iron-image class="image-view" src="/images/background/2015_3.jpg" sizing="cover"></iron-image>-->
+    <!--</neon-animatable>-->
+    <!--</neon-animated-pages>-->
+    <!--</div>-->
+    <!--</blocks-container>-->
+    <!--</div>-->
+
+    <video-dialog id="videoDialog" title="[[video.title]]" youtube-id="[[video.youtubeId]]"
+                  entry-animation="scale-up-animation"
+                  exit-animation="fade-out-animation" modal disable-controls></video-dialog>
 
   </template>
 
