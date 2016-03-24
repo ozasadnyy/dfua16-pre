@@ -25,125 +25,73 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../blocks-container/blocks-container.html">
 <link rel="import" href="../video-dialog/video-dialog.html">
-<link rel="import" href="../mailchimp-subscribe/mailchimp-subscribe.html">
+<link rel="import" href="../subscribe-dialog/subscribe-dialog.html">
 
 <dom-module id="home-page">
 
   <template>
     <style include="shared-styles">
       :host {
-        --mailchimp-color: #fff;
         @apply(--layout-vertical);
         @apply(--layout-justified);
         @apply(--layout-fit);
         width: 100%;
         height: 100%;
-        font-weight: 100;
-        color: #4e4e4e;
-        overflow: hidden;
+        color: var(--primary-text-color);
       }
 
       a {
         text-decoration: none;
-        color: #fff;
       }
 
-      .main-description {
+      .home-wrapper {
         @apply(--layout-vertical);
         @apply(--layout-center-center);
         @apply(--layout-flex);
         padding: 32px;
       }
 
-      .logo {
-        width: 30vw;
-        height: 150px;
+      blocks-container {
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2)
       }
 
-      .main-title {
-        margin: 15px auto;
-        font-size: 2.5em;
-        font-weight: 100;
+      .block-item {
+        background: var(--primary-background-color);
+      }
+
+      .info {
+        @apply(--layout-vertical);
+        height: 100%;
+      }
+
+      .logo {
+        width: 180px;
+        height: 80px;
       }
 
       .dates {
         margin-top: 10px;
-        font-size: 1.6em;
-      }
-
-      .play-video {
-        @apply(--layout-vertical);
-        @apply(--layout-center-center);
-        margin: 10px auto;
-        cursor: pointer;
-        transition: transform 0.5s;
-      }
-
-      .play-video:hover {
-        transform: scale(1.05);
-      }
-
-      .play-icon {
-        --iron-icon-width: 46px;
-        --iron-icon-height: 46px;
-      }
-
-      .play-text {
-        margin-top: 5px;
-        font-size: 0.95em;
+        font-size: 24px;
         font-weight: 400;
+        line-height: 32px;
       }
 
-      .footer {
-        @apply(--layout-vertical);
-        @apply(--layout-justified);
-        padding: 24px;
-        width: 100%;
-        background: #607D8B;
-        color: #fff;
+      .description {
+        font-size: 20px;
+        line-height: 28px;
       }
 
-      .connect {
-        @apply(--layout-horizontal);
-        @apply(--layout-justified);
+      .info-links {
+        text-align: right;
       }
 
-      .subscribe {
+      .primary {
+        background: var(--primary-color);
+        color: var(--text-primary-color);
+      }
+
+      .spacer {
         @apply(--layout-flex);
-      }
-
-      .tweets {
-        @apply(--layout-flex);
-      }
-
-      .hashtag {
-        margin: 0;
-        font-size: 4em;
-      }
-
-      .divider {
-        width: 40px;
-      }
-
-      .bottom {
-        margin-top: 20px;
-        list-style: none;
-        text-align: center;
-      }
-
-      .links {
-        margin: 0;
-        padding: 0;
-      }
-
-      .bottom li {
-        margin: 0;
-        display: inline-block;
-        font-size: 0.9em;
-      }
-
-      .bottom li:not(:last-of-type)::after {
-        content: " • ";
       }
 
       .pages {
@@ -151,94 +99,105 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         height: 100%;
       }
 
-      .content {
-        background: #607D8B;
-        color: #fff;
-      }
-
       .image-view {
         @apply(--layout-fit);
       }
+
+      .footer {
+        @apply(--layout-horizontal);
+        @apply(--layout-justified);
+        padding: 30px 36px;
+        background: var(--primary-background-color);
+      }
+
+      .gdg-logo {
+        width: 90px;
+        height: 33px;
+      }
+
+      .links {
+        @apply(--layout-horizontal);
+        @apply(--layout-center);
+        margin: 0;
+        padding: 0;
+      }
+
+      .links li {
+        margin-left: 32px;
+        display: inline-block;
+      }
+
+      .links a {
+        @apply(--layout-self-center);
+        font-size: 0.85em;
+        font-weight: 500;
+        text-transform: uppercase;
+        color: var(--primary-color);
+      }
     </style>
 
-    <div class="container main-description">
-      <iron-image class="logo" src="/images/logo.svg" sizing="contain" alt="{$ title $}"></iron-image>
-      <h3 class="main-title">Inspire other people by your own example</h3>
-      <p class="dates">Join us on September 09-10, Lviv</p>
+    <div class="home-wrapper">
+      <blocks-container>
 
-      <div class="play-video" on-tap="openVideo">
-        <div>
-          <iron-icon class="play-icon" icon="icons:play"></iron-icon>
+        <div class="block-item">
+          <div class="content">
+            <neon-animated-pages class="pages" selected="0" entry-animation="fade-in-animation"
+                                 exit-animation="fade-out-animation" animate-initial-selection>
+              <neon-animatable>
+                <div class="info">
+                  <iron-image class="logo" src="/images/logo.svg" sizing="contain" alt="{$ title $}"></iron-image>
+                  <h2 class="dates">September 09-10, 2016<br>Lviv, Ukraine</h2>
+
+                  <!--<h3 class="motto">Inspire other people by your own example</h3>-->
+
+                  <p class="description">The biggest Google tech conference in Ukraine carefully crafted for you by GDG
+                    community! All about Android, Web and Cloud from the world experts</p>
+                  <div class="spacer"></div>
+                  <div class="info-links">
+                    <paper-button on-tap="openVideoDialog">See how it was in 2015</paper-button>
+                    <paper-button on-tap="openSubscribeDialog" class="primary" raised>Subscribe</paper-button>
+                  </div>
+                </div>
+
+              </neon-animatable>
+            </neon-animated-pages>
+          </div>
         </div>
-        <div class="play-text">See how it was in 2015</div>
-      </div>
+
+        <div class="block-item">
+          <neon-animated-pages id="blocks" class="pages" selected="{{selected}}" entry-animation="fade-in-animation"
+                               exit-animation="fade-out-animation" animate-initial-selection>
+            <neon-animatable>
+              <iron-image class="image-view" src="/images/background/2015_1.jpg" sizing="cover"></iron-image>
+            </neon-animatable>
+            <neon-animatable>
+              <iron-image class="image-view" src="/images/background/2015_2.jpg" sizing="cover"></iron-image>
+            </neon-animatable>
+            <neon-animatable>
+              <iron-image class="image-view" src="/images/background/2015_3.jpg" sizing="cover"></iron-image>
+            </neon-animatable>
+          </neon-animated-pages>
+        </div>
+
+      </blocks-container>
+
     </div>
 
     <div class="footer">
-      <div class="container">
-        <div class="connect">
-          <div class="subscribe">
-            <p>Stay connected with us. Subscribe to get the latest news.</p>
-            <mailchimp-subscribe url="[[mailchimp.url]]" name="[[mailchimp.name]]"></mailchimp-subscribe>
-          </div>
-          <div class="divider"></div>
-          <div class="tweets">
-            <p class="hashtag">#dfua</p>
-          </div>
-        </div>
-        <div class="bottom">
-          <ul class="links">
-            <li><a href="/2015" target="_blank">GDG DevFest 2015</a></li>
-            <li><a href="/2015" target="_blank">Become a speaker</a></li>
-            <li><a href="/2015" target="_blank">Become a sponsor</a></li>
-            <li><a href="mailto:devfest@gdg.org.ua" target="_blank">devfest@gdg.org.ua</a></li>
-          </ul>
-        </div>
-      </div>
-
+      <iron-image class="gdg-logo" src="/images/gdg-logo.svg" sizing="contain" alt="GDG Lviv"></iron-image>
+      <ul class="links">
+        <li><a href="/2015" target="_blank">GDG DevFest 2015</a></li>
+        <li><a href="https://docs.google.com/forms/d/1rNGi2oPOAZ84mKkL5ccDYUEp93cO0RJ4GZZ-NTmtkYg/viewform" target="_blank">Become a speaker</a></li>
+        <li><a href="mailto:devfest@gdg.org.ua?subject=Partnership with GDG DevFest Ukraine 2016" target="_blank">Become a partner</a></li>
+        <li><a href="mailto:devfest@gdg.org.ua" target="_blank">devfest@gdg.org.ua</a></li>
+      </ul>
     </div>
-
-    <!--<div>-->
-    <!--<blocks-container>-->
-    <!--<div class="block-item">-->
-    <!--<div class="content">-->
-    <!--<neon-animated-pages class="pages" selected="{{selected}}" entry-animation="fade-in-animation"-->
-    <!--exit-animation="fade-out-animation">-->
-    <!--<neon-animatable>-->
-    <!--<p>The biggest Google tech conference in Ukraine carefully crafted for you by GDG community! All about-->
-    <!--Android, Web and Cloud from the world experts</p>-->
-    <!--</neon-animatable>-->
-    <!--<neon-animatable>-->
-    <!--<p>Would you like to become a speaker?</p>-->
-    <!--<paper-button>Fill form</paper-button>-->
-    <!--</neon-animatable>-->
-    <!--<neon-animatable>-->
-    <!--<h2>Test 3</h2>-->
-    <!--</neon-animatable>-->
-    <!--</neon-animated-pages>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div class="block-item">-->
-    <!--<neon-animated-pages id="blocks" class="pages" selected="{{selected}}" entry-animation="fade-in-animation"-->
-    <!--exit-animation="fade-out-animation">-->
-    <!--<neon-animatable>-->
-    <!--<iron-image class="image-view" src="/images/background/2015_1.jpg" sizing="cover"></iron-image>-->
-    <!--</neon-animatable>-->
-    <!--<neon-animatable>-->
-    <!--<iron-image class="image-view" src="/images/background/2015_2.jpg" sizing="cover"></iron-image>-->
-    <!--</neon-animatable>-->
-    <!--<neon-animatable>-->
-    <!--<iron-image class="image-view" src="/images/background/2015_3.jpg" sizing="cover"></iron-image>-->
-    <!--</neon-animatable>-->
-    <!--</neon-animated-pages>-->
-    <!--</div>-->
-    <!--</blocks-container>-->
-    <!--</div>-->
 
     <video-dialog id="videoDialog" title="[[video.title]]" youtube-id="[[video.youtubeId]]"
                   entry-animation="scale-up-animation"
                   exit-animation="fade-out-animation" modal disable-controls></video-dialog>
-
+    <subscribe-dialog id="subscribeDialog" url="[[mailchimp.url]]" name="[[mailchimp.name]]" entry-animation="scale-up-animation"
+                      exit-animation="fade-out-animation" modal with-backdrop></subscribe-dialog>
   </template>
 
   <script src="home-page.js"></script>

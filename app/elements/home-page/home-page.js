@@ -23,14 +23,19 @@ class HomePage {
   }
 
   ready() {
-    // window.clearInterval(_cycleBlocksInterval);
-    // var _cycleBlocksInterval = window.setInterval(function () {
-    //   this.$.blocks.selectNext();
-    // }.bind(this), 8000);
+    this.selected = 0;
+    window.clearInterval(_cycleBlocksInterval);
+    var _cycleBlocksInterval = window.setInterval(function () {
+      this.$.blocks.selectNext();
+    }.bind(this), 4000);
   }
 
-  openVideo() {
+  openVideoDialog() {
     this.$.videoDialog.open();
+  }
+
+  openSubscribeDialog() {
+    this.$.subscribeDialog.open();
   }
 }
 
