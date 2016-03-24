@@ -2,10 +2,7 @@ class HomePage {
   beforeRegister() {
     this.is = 'home-page';
     this.properties = {
-      selected: {
-        type: Number,
-        value: 0
-      },
+      selected: Number,
       video: {
         type: Object,
         value: {
