@@ -7,7 +7,7 @@
   <template>
     <style include="shared-styles">
       :host {
-        @apply(--layout-horizontal);
+        @apply(--layout-vertical);
         @apply(--layout-wrap);
         @apply(--layout-center-justified);
       }
@@ -15,8 +15,6 @@
       ::content > .block-item {
         @apply(--layout-vertical);
         position: relative;
-        width: 100vw;
-        height: 50vw;
         transition: box-shadow 120ms ease-out;
       }
 
@@ -25,18 +23,22 @@
       }
 
       ::content > .block-item > .content {
-        @apply(--layout-fit);
-        padding: 16px;
+        padding: var(--gutter-sm);
         font-size: 1.5em;
+        overflow-y: auto;
       }
 
-      @media (min-width: 769px) {
+      @media (min-width: 961px) {
+        :host {
+          @apply(--layout-horizontal);
+        }
         ::content > .block-item {
-          width: 50vw;
-          height: 50vw;
+          width: 445px;
+          height: 445px;
         }
         ::content > .block-item > .content {
-          padding: 24px;
+          @apply(--layout-fit);
+          padding: var(--gutter-md);
         }
 
         ::content > .block-item.shadow-hover:hover {
@@ -47,23 +49,13 @@
         }
       }
 
-      @media (min-width: 961px) {
-        ::content > .block-item {
-          width: 480px;
-          height: 480px;
-        }
-        ::content > .block-item > .content {
-          padding: 32px;
-        }
-      }
-
       @media (min-width: 1305px) {
         ::content > .block-item {
           width: 580px;
           height: 580px;
         }
         ::content > .block-item > .content {
-          padding: 48px;
+          padding: var(--gutter-lg);
         }
       }
 

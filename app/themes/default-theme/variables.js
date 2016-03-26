@@ -24,8 +24,8 @@ module.exports = {
 
   // Web Application Manifest - manifest.json
   manifest: {
-    'theme_color': darkPrimaryColor,
-    'background_color': primaryColor
+    'theme_color': '#607D8B',
+    'background_color': '#fff'
   },
 
   // HTML Metadata in head of index.html

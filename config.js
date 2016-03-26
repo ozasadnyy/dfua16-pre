@@ -44,7 +44,7 @@ module.exports = {
   // Deploy task
   deploy: {
     // Choose hosting
-    hosting: 'gae', // or firebase, gcs, ssh
+    hosting: 'firebase', // or firebase, gcs, ssh
     // Firebase
     // Firebase requires Firebase Command Line Tools to be installed and configured.
     // For info on tool: https://www.firebase.com/docs/hosting/command-line-tool.html
@@ -52,7 +52,7 @@ module.exports = {
       env: {
         development: 'polymer-starter-kit-plus-dev', // subdomain
         staging:     'polymer-starter-kit-plus-staging',
-        production:  'polymer-starter-kit-plus'
+        production:  'dfua-test'
       }
     },
     // Google App Engine

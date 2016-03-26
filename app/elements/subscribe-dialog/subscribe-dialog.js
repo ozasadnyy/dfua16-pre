@@ -8,12 +8,16 @@ Polymer({
   ],
 
   properties: {
-    url: String,
+    action: String,
     name: String
   },
 
   listeners: {
     'neon-animation-finish': '_onNeonAnimationFinish'
+  },
+
+  subscribe() {
+    this.$.subscribeForm.submit();
   },
 
   _renderOpened: function () {
