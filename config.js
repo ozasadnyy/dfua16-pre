@@ -111,7 +111,7 @@ module.exports = {
   pageSpeed: {
     key: '', // need uncomment in task
     nokey: true,
-    site: 'https://polymer-starter-kit-plus.firebaseapp.com',
+    site: 'https://dfua-test.firebaseapp.com',
     strategy: 'mobile' // or desktop
   },
   // Service Worker

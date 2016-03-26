@@ -8,7 +8,6 @@
     <style include="shared-styles">
       :host {
         @apply(--layout-vertical);
-        @apply(--layout-wrap);
         @apply(--layout-center-justified);
       }
 
@@ -49,7 +48,7 @@
         }
       }
 
-      @media (min-width: 1305px) {
+      @media (min-width: 1305px) and (min-height: 750px) {
         ::content > .block-item {
           width: 580px;
           height: 580px;

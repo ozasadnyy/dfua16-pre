@@ -12,8 +12,7 @@ var primaryColorName = 'indigo',
     themeMode        = 'light', // or dark
 
     colors           = require('./colors'),
-    primaryColor     = colors['paper-' + primaryColorName + '-500'],
-    darkPrimaryColor = colors['paper-' + primaryColorName + '-700'];
+    primaryColor     = '#607D8B';
 
 module.exports = {
   global: {
@@ -24,14 +23,14 @@ module.exports = {
 
   // Web Application Manifest - manifest.json
   manifest: {
-    'theme_color': '#607D8B',
+    'theme_color': primaryColor,
     'background_color': '#fff'
   },
 
   // HTML Metadata in head of index.html
   metadata: {
     // Chrome for Android theme color
-    chromeThemeColor: darkPrimaryColor,
+    chromeThemeColor: primaryColor,
     // Tile color for Win8
     msapplicationTileColor: primaryColor
   }

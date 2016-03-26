@@ -53,7 +53,7 @@ gulp.task('lint-js', ['ensureFiles'], function() {
       stream: true,
       once: true
     }));
-    
+
     //.pipe($.if(!browserSync.active, $.jshint.reporter('fail')));
 });
 
@@ -217,7 +217,7 @@ gulp.task('serve', ['js', 'lint', 'lint-js', 'manifest', 'styles'], function() {
     https: config.browserSync.https,
     notify: config.browserSync.notify,
     port: config.browserSync.port,
-    logPrefix: 'PSK+',
+    logPrefix: 'dfua-pre',
     snippetOptions: {
       rule: {
         match: '<span id="browser-sync-binding"></span>',
