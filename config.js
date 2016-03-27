@@ -52,7 +52,7 @@ module.exports = {
       env: {
         development: 'polymer-starter-kit-plus-dev', // subdomain
         staging:     'polymer-starter-kit-plus-staging',
-        production:  'dfua-test'
+        production:  'hoverboard-firebase'
       }
     },
     // Google App Engine
@@ -111,7 +111,7 @@ module.exports = {
   pageSpeed: {
     key: '', // need uncomment in task
     nokey: true,
-    site: 'https://dfua-test.firebaseapp.com',
+    site: 'https://hoverboard-firebase.firebaseapp.com',
     strategy: 'mobile' // or desktop
   },
   // Service Worker

@@ -25,7 +25,7 @@ module.exports = {
     links: [
       {
         title: 'GDG DevFest 2015',
-        url: '/2015'
+        url: '/2015/'
       },
       {
         title: 'Become a speaker',
