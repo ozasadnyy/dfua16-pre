@@ -13,11 +13,13 @@ module.exports = function ($, gulp) { return function () {
     /^\/app.yaml/g,
     /^\/cache-config.json/g,
     /^\/index.html/g,
+    /^\/images\/social-share.png/g,
     /^\/sw-import.js/g
   ], dontUpdateReference: [
     /^\/app.yaml/g,
     /^\/cache-config.json/g,
     /^\/index.html/g,
+    /^\/images\/social-share.png/g,
     /^\/sw-import.js/g
   ]});
 

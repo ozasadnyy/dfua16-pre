@@ -1,4 +1,5 @@
 module.exports = {
+  url: 'https://devfest.gdg.org.ua',
   title: 'GDG DevFest Ukraine 2016',
   description: 'The biggest Google tech conference in Ukraine carefully crafted for you by GDG community! All about Android, Web and Cloud from the world experts',
   charset: 'UTF-8',
@@ -9,6 +10,27 @@ module.exports = {
   appleMobileWebAppTitle: 'GDG DevFest Ukraine 2016',
   // Google Analytics Tracking ID
   googleAnalyticsTrackingId: 'UA-43643469-1',
+
+  social: {
+    twitter: {
+      nickname: 'GDGLviv',
+      url: 'https://twitter.com/gdglviv'
+    },
+    gplus: {
+      nickname: '102444623953913144164',
+      url: 'https://plus.google.com/102444623953913144164'
+    },
+    facebook: {
+      nickname: 'GDGLviv',
+      url: 'https://www.facebook.com/GDGLviv'
+    },
+    // Linkedin company
+    linkedin: {
+      nickname: 'google-developers-group-lviv',
+      url: 'https://www.linkedin.com/company/google-developers-group-lviv'
+    }
+  },
+  hashtag: 'dfua',
 
   home: {
     dates: 'September 09-10, 2016',
